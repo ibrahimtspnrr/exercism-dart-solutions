@@ -5,7 +5,6 @@ class Bob {
     if (trimmed.isEmpty) return 'Fine. Be that way!';
 
     final isQuestion = trimmed.endsWith('?');  //Cümle soru işaretiyle mi bitiyor?
-    final hasLetters = trimmed.contains(RegExp(r'[A-Z]'));  //içinde en az bir harf var mı? 
     final isShouting = trimmed == trimmed.toUpperCase() && trimmed.contains(RegExp(r'[A-Z]')); //Kullanıcının yazdığı tüm harfler büyük harf mi? ,Aynı zamanda içinde en az bir harf var mı?
 
     if (isShouting && isQuestion) return "Calm down, I know what I'm doing!";
