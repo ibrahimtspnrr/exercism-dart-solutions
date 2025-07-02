@@ -9,5 +9,5 @@ class Leap {
     } else {
       return false;
     }
-  }
+  } 
 }
