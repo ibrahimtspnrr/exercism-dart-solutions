@@ -1,16 +1,19 @@
 class PrimeFactors {
-  List<int> factors(int number) {  // sonunda bir liste dönecek
-    List<int> result = [];   // boş bir liste elemanları atmak için
-    int divisor = 2;
+  // Bu fonksiyon, verilen sayının asal çarpanlarını döndüren fonksiyondur.
+  List<int> factors(int number) {  
+    List<int> result = [];  // Asal çarpanları tutacak bir liste oluşturuyoruz
+    int divisor = 2;  // İlk asal çarpan olan 2 ile başlıyoruz
 
+    // Sayı 1'den büyük olduğu sürece devam et
     while (number > 1) {
+      // Eğer sayı 'divisor' ile tam bölünebiliyorsa
       while (number % divisor == 0) {
-        result.add(divisor);
-        number = number~/divisor;
+        result.add(divisor);  // Asal çarpanı sonuca ekliyoruz
+        number = number ~/ divisor;  // Sayıyı bu asal çarpana bölüyoruz
       }
-      divisor++;
+      divisor++;  // Sonraki asal çarpanı kontrol etmek için divisor'ı arttırıyoruz
     }
 
-    return result;
+    return result;  // Asal çarpanları içeren listeyi döndürüyoruz
   }
 }

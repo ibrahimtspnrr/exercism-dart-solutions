@@ -1,21 +1,26 @@
 class ArmstrongNumbers {
-  bool isArmstrongNumber(String number) {
-    int length = number.length;
-    BigInt sum = BigInt.zero;
+  // Sayı Armstrong mu? Kontrol eder
+  bool isArmstrongNumber(String number) { // string kullanma sebebim uzunluğunu length ile alabilmek için
+    int length = number.length; // Kaç basamaklı
+    int total = 0; // Toplamı tut
 
+    // Her basamağı sırayla al
     for (int i = 0; i < length; i++) {
-      int digit = int.parse(number[i]);
-      sum += _bigIntPow(BigInt.from(digit), length);
+      int digit = int.parse(number[i]); // Basamak değeri // parse stringi int e çevirir
+      total += power(digit, length); // Üssünü al ve topla
     }
 
-    return sum == BigInt.parse(number);
+    // Toplam sayı ile aynıysa Armstrong'dur
+    return total == int.parse(number);
   }
 
-  BigInt _bigIntPow(BigInt base, int exponent) {
-    BigInt result = BigInt.one;
+  // Sayının üssünü hesaplar (örnek: 3^4 = 81)
+  int power(int base, int exponent) {
+    int result = 1;
     for (int i = 0; i < exponent; i++) {
       result *= base;
     }
     return result;
   }
-} 
+}
+

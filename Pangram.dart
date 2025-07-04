@@ -1,22 +1,26 @@
 class Pangram {
+  // Bu fonksiyon, verilen stringin bir pangram olup olmadığını kontrol eder.
   bool isPangram(String input) {
+    // İngilizce alfabesindeki tüm harfleri tutan bir string
     const String alfabe = 'abcdefghijklmnopqrstuvwxyz';
-    Set<String> harfler = {};  // set kullanılma sebebi liste birden fazla harf varsa siler 
 
-    
-    input = input.toLowerCase();  // Tüm karakterleri küçük harfe çevirir
+    // Tekrar eden harflerin yalnızca bir kez sayılmasını sağlamak için set kullanıyoruz
+    Set<String> harfler = {};  
 
-    
-    for (int i = 0; i < input.length; i++) {  // Her karakteri tek tek kontrol et
+    // Tüm karakterleri küçük harfe çeviriyoruz
+    input = input.toLowerCase();  
+
+    // Verilen stringin her bir karakterini kontrol ediyoruz
+    for (int i = 0; i < input.length; i++) {  
       String karakter = input[i];
 
-      
-      if (alfabe.contains(karakter)) { // Eğer bu karakter alfabe içinde varsa, sete ekle
+      // Eğer karakter alfabe içinde varsa, set'e ekliyoruz
+      if (alfabe.contains(karakter)) { 
         harfler.add(karakter);
       }
     }
 
-    
+    // Eğer tüm 26 harf set içinde varsa, bu bir pangramdır
     return harfler.length == 26;  
   }
 }

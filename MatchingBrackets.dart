@@ -1,40 +1,40 @@
 class MatchingBrackets {
+  // Bu fonksiyon, verilen stringdeki parantezlerin eşleşip eşleşmediğini kontrol eder.
   bool isPaired(String input) {
-    List<String> stack = [];
-    Map<String, String> pairs = 
-    {
+    List<String> stack = [];  // Parantezleri geçici olarak saklayacağımız bir yığın (stack) oluşturuyoruz.
+    
+    // Kapanış parantezleri ile eşleşen açılış parantezlerini belirleyen bir harita (pairs) oluşturuyoruz.
+    Map<String, String> pairs = {
       ')': '(',
       ']': '[',
       '}': '{',
     };
 
-    for (int i = 0; i < input.length; i++) 
-    {
+    // Stringin her bir karakterini sırayla kontrol ediyoruz.
+    for (int i = 0; i < input.length; i++) {
       String char = input[i];
 
-      // Açılış parantezleri eklenir
-      if (char == '(' || char == '[' || char == '{') 
-      {
+      // Açılış parantezlerini bulduğumuzda, stack'e ekliyoruz.
+      if (char == '(' || char == '[' || char == '{') {
         stack.add(char);
       }
 
-      // Kapanış parantezi varsa
-      else if (char == ')' || char == ']' || char == '}') 
-      {
-        // Stack boşsa eşleşecek parantez yok
+      // Kapanış parantezini bulduğumuzda:
+      else if (char == ')' || char == ']' || char == '}') {
+        // Eğer stack boşsa, eşleşecek açılış parantezi yok demektir, bu durumda false döndürürüz.
         if (stack.isEmpty) return false;
 
-        // En son eklenen parantezi al
+        // Stack'teki son eklenen açılış parantezini alıyoruz.
         String last = stack.removeLast();
 
-        // Eşleşme yanlışsa false
+        // Eğer son eklenen açılış parantezi, beklenen eşleşen kapanış paranteziyle uyuşmuyorsa, false döndürüyoruz.
         if (last != pairs[char]) return false;
       }
 
-      // Diğer karakterleri (harf, rakam, boşluk vb.) yok say
+      // Diğer karakterleri (harf, rakam, boşluk vb.) kontrol etmiyoruz.
     }
 
-    // Eğer stack boşsa tüm parantezler doğru şekilde eşleşmiş
+    // Eğer tüm parantezler doğru şekilde eşleştiyse, stack boş olur.
     return stack.isEmpty;
   }
 }
